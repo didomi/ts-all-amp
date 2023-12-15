@@ -1,6 +1,5 @@
-export function makeIframe(config, consentBlockingTagName = '') {
-
-  if(!config) {
+function makeIframe(config, consentBlockingTagName = "") {
+  if (!config) {
     return;
   }
 
@@ -25,11 +24,15 @@ export function makeIframe(config, consentBlockingTagName = '') {
         <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
       </head>
       <body>
-        <div class="info"><span class="title">ApiKey:</span><span class="value">${ JSON.parse(config).clientConfig?.config?.app?.apiKey }</span></div>
-        <div class="info"><span class="title">NoticeId:</span><span class="value">${ JSON.parse(config).clientConfig?.noticeId }</span></div>
+        <div class="info"><span class="title">ApiKey:</span><span class="value">${
+          JSON.parse(config).clientConfig?.config?.app?.apiKey
+        }</span></div>
+        <div class="info"><span class="title">NoticeId:</span><span class="value">${
+          JSON.parse(config).clientConfig?.noticeId
+        }</span></div>
         <amp-consent id="didomi" layout="nodisplay" type="didomi">
           <script type="application/json">
-            ${ config }
+            ${config}
           </script>
         </amp-consent>
 
@@ -40,6 +43,7 @@ export function makeIframe(config, consentBlockingTagName = '') {
     </html>`;
 
   window.ampHTML = iframe;
-  document.querySelector('#iframe_container iframe').setAttribute('srcdoc', iframe)
-
+  document
+    .querySelector("#iframe_container iframe")
+    .setAttribute("srcdoc", iframe);
 }
