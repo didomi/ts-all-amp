@@ -1,3 +1,16 @@
+import _ from "lodash";
+import "./style/style.scss";
+import {
+  setCheckedStatus,
+  updateInputs,
+  updateUrl,
+  isJSONvalid,
+  validateJSON,
+  makeConfigObject,
+  writeConfig,
+} from "./scripts/formUI.js";
+import { makeIframe } from "./scripts/makeIframe.js";
+
 Array.from(document.querySelectorAll("input, textarea")).forEach((input) => {
   input.addEventListener("keyup", () => {
     if (input.getAttribute("data-format") == "json") {

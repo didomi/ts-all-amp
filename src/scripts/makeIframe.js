@@ -1,4 +1,4 @@
-function makeIframe(config, consentBlockingTagName = "") {
+export function makeIframe(config, consentBlockingTagName = "") {
   if (!config) {
     return;
   }
