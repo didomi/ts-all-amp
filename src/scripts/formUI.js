@@ -1,3 +1,5 @@
+import _ from "lodash";
+
 function removeEmptyObjects(obj) {
   return _(obj)
     .pickBy(_.isObject)
@@ -14,7 +16,7 @@ function prettyPrint(textarea, value) {
   textarea.value = pretty;
 }
 
-function isJSONvalid(text) {
+export function isJSONvalid(text) {
   try {
     JSON.parse(text);
   } catch (e) {
@@ -23,7 +25,7 @@ function isJSONvalid(text) {
   return true;
 }
 
-function setCheckedStatus(el) {
+export function setCheckedStatus(el) {
   if (el.getAttribute("type") == "radio") {
     if (el.checked) {
       el.closest(".toggle_container").setAttribute("data-checked", "true");
@@ -33,7 +35,7 @@ function setCheckedStatus(el) {
   }
 }
 
-function validateJSON(el) {
+export function validateJSON(el) {
   if (el.getAttribute("data-format") == "json") {
     if (isJSONvalid(el.value)) {
       updateUrl();
@@ -44,7 +46,7 @@ function validateJSON(el) {
   }
 }
 
-function updateInputs() {
+export function updateInputs() {
   if (!new URL(document.location.href).searchParams.get("cbody")) {
     return;
   }
@@ -106,7 +108,7 @@ function updateInputs() {
   });
 }
 
-function updateUrl() {
+export function updateUrl() {
   var params = `acb=${
     document.querySelector("[data-acb]").value
       ? btoa(document.querySelector("[data-acb]").value)
@@ -139,7 +141,7 @@ function updateUrl() {
   );
 }
 
-function makeConfigObject() {
+export function makeConfigObject() {
   window.config = window.config || {};
   document.location.search
     .replace("?", "")
@@ -150,7 +152,7 @@ function makeConfigObject() {
     });
 }
 
-function writeConfig(input, textarea) {
+export function writeConfig(input, textarea) {
   var textareaJSON;
   if (textarea.value) {
     textareaJSON = JSON.parse(textarea.value);
